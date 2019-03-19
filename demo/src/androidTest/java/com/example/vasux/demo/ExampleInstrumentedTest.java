@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.tml.sharethem.demo", appContext.getPackageName());
+        assertEquals("com.example.vasux.demo", appContext.getPackageName());
     }
 }

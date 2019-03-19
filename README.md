@@ -14,15 +14,15 @@ IMPLEMENTATION: The "VasuX" app is an app for transfer or sharing files from one
  
 1)"Hotspot Controller" , which uses a process of examining or modifying the run time behavior of a class at run time known as JAVA Reflection as there are no such APIs available for turning on/off the Hotpost in Android. This HC creates an open Wifi hotspot configuration with an SSID which can taken by receivers to recognize VasuX senders.
 
-2)"VasuX Server" , which is a small HTTP server extended from NanoHttpd(an open-source, small-footprint web server that is suitable for embedding in applications, written in the Java programming language) and serves the sender data to receivers using IP address as hostname and works on port assigned by user or system by default.
+2)"VasuXServer" , which is a small HTTP server extended from NanoHttpd(an open-source, small-footprint web server that is suitable for embedding in applications, written in the Java programming language) and serves the sender data to receivers using IP address as hostname and works on port assigned by user or system by default.
 
-3)"VasuX Service" , which controls the lifecycle of the VasuX-server and also manages notification with a stop action.
+3)"VasuXService" , which controls the lifecycle of the VasuXServer and also manages notification with a stop action.
 
 4)"SENDER & RECEIVER" , where the SENDER displays port,connected clients info along with file transfer status for each connected client and the RECEIVER provides UX/UI to list the files for download from Android Download Manager.
 
 HOW IT WORKS: There are two modes in the app known as "SENDER MODE" & "RECEIVER MODE":
  
-1)SENDER MODE: Intents Extras like "ShareService.EXTRA_FILE_P A THS"(which holds location references to files on device) are passed in order to start "VasuXActivity" which invokes "VasuXService" which in turn starts an instance of "VasuXServer" with device IP as address and port if not specified assigned by system. On successful server setup, Hotspot Controller creates an OPEN WIfi Configuration with an SSID using combination of Android ID, Port number and Sender Name("Vasu", name in this case).The VasuXActivity then scans for clients/receivers using HC methods and adds them to the list.
+1)SENDER MODE: Intents Extras like "ShareService.EXTRA_FILE_PATHS"(which holds location references to files on device) are passed in order to start "VasuXActivity" which invokes "VasuXService" which in turn starts an instance of "VasuXServer" with device IP as address and port if not specified assigned by system. On successful server setup, Hotspot Controller creates an OPEN WIfi Configuration with an SSID using combination of Android ID, Port number and Sender Name("Vasu", name in this case).The "VasuXActivity" then scans for clients/receivers using HC methods and adds them to the list.
 
 2)RECEIVER MODE: This mode doesn't uses any Intent Extras and is easy to initiate.The "ReceiverActivity" scans for senders automatically and gets files info. from "VasuXServer" after having a succesful connection. Then the "ReceiverActivity" places the "FilesListingFragment" and Sender files are listed and download request to Android Download Manager is enqueued.
 

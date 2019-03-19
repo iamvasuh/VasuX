@@ -1,7 +1,6 @@
 package com.user.vasu_x;
 
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 /**

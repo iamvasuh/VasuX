@@ -25,7 +25,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.example.vasux.R;
 import com.example.vasux.utils.DividerItemDecoration;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;

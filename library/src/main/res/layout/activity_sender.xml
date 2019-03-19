@@ -23,6 +23,7 @@
             android:theme="@style/p2p_switch" />
     </android.support.v7.widget.Toolbar>
 
+    
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

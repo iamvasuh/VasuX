@@ -11,6 +11,7 @@ AIM: Image Synchronization over UDP
 USE CASE: User A has two images on her Android phone. User B wants to fetch those images from User A’s device to her own Android phone. User B click the “fetch request” button on her phone, User A click click “agree” button to start synchronizing images. As a result, User B gets those images on her phone screen.
 
 
+
 IMPLEMENTATION: The "VasuX" app is an app for transfer or sharing files from one device to another device. This app enables point to point file transfer/sharing between devices
  using WIFI-Hotspot.The VasuX library supports the VasuX demo for the app to function and share files. The library consistes of 4 main componenents namely-
  

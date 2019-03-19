@@ -19,7 +19,6 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.vasux.utils.RecyclerViewArrayAdapter;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

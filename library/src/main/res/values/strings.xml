@@ -22,7 +22,7 @@
     <string name="p2p_receiver_gps_no_permission_prompt">Please enable Location(GPS) permission to proceed with receiving files Offline.\nPress Settings button and goto Permissions section to grant LOCATION PERMISSION(GPS)</string>
     <string name="p2p_receiver_error_sender_disconnected">Sender Hotspot disconnected. retrying</string>
 
-    <string name="p2p_sender_hint_wifi_connected" formatted="false">• Open VasuX App in \'Receiver mode\'</string>
+    <string name="p2p_sender_hint_wifi_connected" formatted="false">• Open VasuX App in \'Receiver mode\' \n\n• Open WiFi settings and connect to: \nSSID: %s\n</string>
     <string name="p2p_sender_subtitle">Hotspot Initialised</string>
 
     <string name="p2p_sender_service_notification_header">VasuX Wifi Hotspot Enabled</string>

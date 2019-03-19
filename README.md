@@ -7,6 +7,7 @@ This is a WarmUp Project from NDN Mentor: Ju Pan
 AIM: Image Synchronization over UDP
 
 
+
 USE CASE: User A has two images on her Android phone. User B wants to fetch those images from User A’s device to her own Android phone. User B click the “fetch request” button on her phone, User A click click “agree” button to start synchronizing images. As a result, User B gets those images on her phone screen.
 
 

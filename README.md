@@ -23,6 +23,7 @@ IMPLEMENTATION: The "VasuX" app is an app for transfer or sharing files from one
 
 4)"SENDER & RECEIVER" , where the SENDER displays port,connected clients info along with file transfer status for each connected client and the RECEIVER provides UX/UI to list the files for download from Android Download Manager.
 
+
 HOW IT WORKS: There are two modes in the app known as "SENDER MODE" & "RECEIVER MODE":
  
 1)SENDER MODE: Intents Extras like "ShareService.EXTRA_FILE_PATHS"(which holds location references to files on device) are passed in order to start "VasuXActivity" which invokes "VasuXService" which in turn starts an instance of "VasuXServer" with device IP as address and port if not specified assigned by system. On successful server setup, Hotspot Controller creates an OPEN WIfi Configuration with an SSID using combination of Android ID, Port number and Sender Name("Vasu", name in this case).

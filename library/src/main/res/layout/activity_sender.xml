@@ -78,5 +78,4 @@
             android:textColor="@android:color/black" />
 
     </RelativeLayout>
-
 </LinearLayout>

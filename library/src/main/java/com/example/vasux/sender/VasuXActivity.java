@@ -1,6 +1,7 @@
 package com.example.vasux.sender;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
@@ -69,7 +70,7 @@ public class VasuXActivity extends AppCompatActivity {
     public static final String PREFERENCES_KEY_SHARED_FILE_PATHS = "vasux_shared_file_paths";
     public static final String PREFERENCES_KEY_DATA_WARNING_SKIP = "vasux_data_warning_skip";
     private static final int REQUEST_WRITE_SETTINGS = 1;
-
+    private static final int PERMISSIONS_REQUEST_CODE_ACCESS_COARSE_LOCATION = 100;
     TextView m_sender_wifi_info;
     TextView m_noReceiversText;
     RelativeLayout m_receivers_list_layout;
@@ -77,20 +78,14 @@ public class VasuXActivity extends AppCompatActivity {
     SwitchCompat m_apControlSwitch;
     TextView m_showShareList;
     Toolbar m_toolbar;
-
     private ReceiversListingAdapter m_receiversListAdapter;
     private CompoundButton.OnCheckedChangeListener m_sender_ap_switch_listener;
-
     private ShareUIHandler m_uiUpdateHandler;
     private BroadcastReceiver m_p2pServerUpdatesListener;
-
     private HotspotControl hotspotControl;
     private boolean isApEnabled = false;
     private boolean shouldAutoConnect = true;
-
     private String[] m_sharedFilePaths = null;
-
-    private static final int PERMISSIONS_REQUEST_CODE_ACCESS_COARSE_LOCATION = 100;
 
     //region: Activity Methods
     @Override
@@ -404,6 +399,7 @@ public class VasuXActivity extends AppCompatActivity {
     /**
      * Updates Hotspot configuration info like Name, IP if enabled.<br> Posts a message to {@link ShareUIHandler} to call itself every 1500ms
      */
+    @SuppressLint("StringFormatMatches")
     private void updateApStatus() {
         if (!HotspotControl.isSupported()) {
             m_sender_wifi_info.setText("Warning: Hotspot mode not supported!\n");
@@ -420,7 +416,7 @@ public class VasuXActivity extends AppCompatActivity {
             else
                 ip = ip.replace("/", "");
             m_toolbar.setSubtitle(getString(R.string.p2p_sender_subtitle));
-            m_sender_wifi_info.setText(getString(R.string.p2p_sender_hint_wifi_connected));
+            m_sender_wifi_info.setText(getString(R.string.p2p_sender_hint_wifi_connected, config.SSID, config.preSharedKey, hotspotControl.getShareServerListeningPort()));
             if (m_showShareList.getVisibility() == View.GONE) {
                 m_showShareList.append(String.valueOf(m_sharedFilePaths.length));
                 m_showShareList.setVisibility(View.VISIBLE);
@@ -487,7 +483,7 @@ public class VasuXActivity extends AppCompatActivity {
         }
         if (null != m_receiversListAdapter)
             m_receiversListAdapter.clear();
-        m_noReceiversText.setVisibility(View.VISIBLE);
+        m_noReceiversText.setVisibility(View.GONE);
     }
 
     /**
@@ -542,7 +538,7 @@ public class VasuXActivity extends AppCompatActivity {
             }
         } else {
             m_receiversListAdapter.add(wifiScanResult);
-            if (m_noReceiversText.getVisibility() == View.VISIBLE)
+            if (m_noReceiversText.getVisibility() == View.GONE)
                 m_noReceiversText.setVisibility(View.GONE);
         }
     }
@@ -556,7 +552,7 @@ public class VasuXActivity extends AppCompatActivity {
 //            m_receiversListAdapter.remove(new WifiApControl.Client(ip, null, null));
         }
         if (m_receiversListAdapter.getItemCount() == 0)
-            m_noReceiversText.setVisibility(View.VISIBLE);
+            m_noReceiversText.setVisibility(View.GONE);
     }
 
     static class ReceiversListItemHolder extends RecyclerView.ViewHolder {
@@ -642,10 +638,9 @@ public class VasuXActivity extends AppCompatActivity {
 
     //region: UI Handler
     static class ShareUIHandler extends Handler {
-        WeakReference<VasuXActivity> mActivity;
-
         static final int LIST_API_CLIENTS = 100;
         static final int UPDATE_AP_STATUS = 101;
+        WeakReference<VasuXActivity> mActivity;
 
         ShareUIHandler(VasuXActivity activity) {
             mActivity = new WeakReference<>(activity);

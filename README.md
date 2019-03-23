@@ -15,7 +15,7 @@ USE CASE: User A has two images on her Android phone. User B wants to fetch thos
 IMPLEMENTATION: The "VasuX" app is an app for transfer or sharing files from one device to another device. This app enables point to point file transfer/sharing between devices
  using WIFI-Hotspot.The VasuX library supports the VasuX demo for the app to function and share files. The library consistes of 4 main componenents namely-
  
-1)"Hotspot Controller" , which uses a process of examining or modifying the run time behavior of a class at run time known as JAVA Reflection as there are no such APIs available for turning on/off the Hotpost in Android except in the versions which are OREO+ becasue these versions use the WifiManager class API for doing the same function. This HC creates an open Wifi hotspot configuration with an SSID which can taken by receivers to recognize VasuX senders.
+1)"Hotspot Controller" , which uses a process of examining or modifying the run time behavior of a class at run time known as JAVA Reflection as there are no such APIs available for turning on/off the Hotpost in Android except in the versions which are OREO+ because these versions use the WifiManager class API for doing the same function. This HC creates an open Wifi hotspot configuration with an SSID which can taken by receivers to recognize VasuX senders.
 
 2)"VasuXServer" , which is a small HTTP server extended from NanoHttpd(an open-source, small-footprint web server that is suitable for embedding in applications, written in the Java programming language) and serves the sender data to receivers using IP address as hostname and works on port assigned by user or system by default.
 
